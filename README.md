@@ -2,6 +2,8 @@
 
 Independent MT4 indicator package for a balanced price-action dashboard.
 
+![Balanced PA Panel overview](docs/assets/panel-overview.jpg)
+
 This release is designed for public/open-source distribution. It is an independent implementation built from general trading concepts such as:
 
 - session value area (`POC`, `VAH`, `VAL`)
@@ -62,12 +64,44 @@ It is not affiliated with, endorsed by, or distributed on behalf of any private 
 3. In MT4, refresh the Navigator or restart the terminal.
 4. Drag `BalancedPAPanelMT4` onto a chart.
 
+## Recommended Timeframes
+
+- `H1`: best default for directional context and cleaner structure reads
+- `M15`: good for active intraday execution once higher-timeframe bias is known
+- `M5`: usable for trigger timing, but naturally noisier and more sensitive to broker feed variation
+- `M1`: not the primary target timeframe; expect more false structure flips and less stable value reads
+
+Practical workflow:
+
+- use `H1` to establish context
+- use `M15` to refine execution
+- use `M5` only when you specifically want tighter trigger timing
+
+## Key Inputs
+
+- `InpLookbackBars`: total loaded bars used for analysis context
+- `InpStructureWindowBars`: structure window used for swing range and supply/demand zoning
+- `InpEqualWindowStartBars` and `InpEqualWindowEndBars`: window used to estimate `EqH` and `EqL`
+- `InpAtrPeriod`: ATR period used in the volatility state
+- `InpEmaFast`, `InpEmaMid`, `InpEmaSlow`: moving-average backbone for directional alignment
+- `InpSessionOffsetHours`: broker-time offset used to normalize session analysis
+- `InpAsiaSessionStartHour` and `InpAsiaSessionEndHour`: Asia range window used in session context
+- `InpPanelX`, `InpPanelY`, `InpPanelWidth`, `InpPanelHeight`: default panel placement and size
+- `InpPanelLineGap`: spacing between text rows in the panel
+- `InpShowBreakoutArrows`: master switch for signal arrows
+- `InpArrowSignalLookbackBars`: lookback window for recent breakout and pullback arrow detection
+
 ## Default Usage
 
 - This is an `MT4` indicator, not an expert advisor.
 - Defaults are tuned for XAUUSD-style intraday chart reading, but inputs are editable.
 - The panel language is English to keep public maintenance simple.
 - The repository tracks source only. Compiled `ex4` files are intentionally excluded.
+- For cleaner decisions, read the panel with higher-timeframe context instead of using every arrow in isolation.
+
+## Version
+
+- `v1.0.0`: first public GitHub release of the independent MT4 source package
 
 ## Development Notes
 
