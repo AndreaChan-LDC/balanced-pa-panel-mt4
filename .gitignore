@@ -1,0 +1,15 @@
+# MetaTrader build artifacts
+*.ex4
+*.ex5
+*.log
+*.mqproj
+
+# Local editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment files
+.env

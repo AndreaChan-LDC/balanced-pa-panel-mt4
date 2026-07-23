@@ -13,11 +13,18 @@ This release is designed for public/open-source distribution. It is an independe
 
 It is not affiliated with, endorsed by, or distributed on behalf of any private trading group, paid community, or locked binary product.
 
-## Included
+## What It Does
+
+- builds a compact intraday dashboard directly on the MT4 chart
+- combines session value information with structure and trigger context
+- separates breakout arrows from pullback arrows
+- keeps the implementation in source form only, so behavior remains inspectable
+
+## Repository Layout
 
 - `Indicators/BalancedPAPanelMT4.mq4`
-- `LICENSE`
 - `docs/OPEN_SOURCE_NOTES.md`
+- `LICENSE`
 
 ## Features
 
@@ -36,6 +43,18 @@ It is not affiliated with, endorsed by, or distributed on behalf of any private 
 - `OrangeRed`: breakout short
 - `Gold`: pullback short
 
+## Panel Readout
+
+- `Decision`: current directional execution bias
+- `State`: market bias, VWAP relation, and volatility regime
+- `Execution`: the immediate tactical read
+- `Read`: compact value, Wyckoff, and Brooks summary
+- `Liquidity`: prior session high/low plus `VAH` and `VAL`
+- `Session`: `POC`, `EqH`, `EqL`, and Asia range context
+- `Structure`: `BOS`, `CHOCH`, and current area
+- `FVG`: nearest upper and lower fair value gap references
+- `Plan`: the next area or condition to wait for
+
 ## Installation
 
 1. Copy `Indicators/BalancedPAPanelMT4.mq4` into your MT4 `MQL4/Indicators` folder.
@@ -43,11 +62,18 @@ It is not affiliated with, endorsed by, or distributed on behalf of any private 
 3. In MT4, refresh the Navigator or restart the terminal.
 4. Drag `BalancedPAPanelMT4` onto a chart.
 
-## Notes
+## Default Usage
 
 - This is an `MT4` indicator, not an expert advisor.
 - Defaults are tuned for XAUUSD-style intraday chart reading, but inputs are editable.
-- The panel language is English so the package is easier to publish and maintain on GitHub.
+- The panel language is English to keep public maintenance simple.
+- The repository tracks source only. Compiled `ex4` files are intentionally excluded.
+
+## Development Notes
+
+- keep public releases source-only
+- avoid uploading third-party branded screenshots unless you own the branding
+- avoid describing the project as an official port of any closed-source tool
 
 ## Public Release Guidance
 
